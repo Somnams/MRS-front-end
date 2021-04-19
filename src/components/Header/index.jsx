@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Typography, Layout} from 'antd';
 import {withRouter} from 'react-router';
+import LoginForm from "../Login";
 import './index.scss';
 
 class Header extends Component {
@@ -13,6 +14,9 @@ class Header extends Component {
         }, {
             text: 'About',
             href: '/about'
+        }, {
+            text: 'Login',
+            href: '#'
         }];
     }
 

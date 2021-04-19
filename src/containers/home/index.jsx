@@ -3,8 +3,6 @@ import {Button} from 'antd';
 import {PlusOutlined, MinusOutlined} from '@ant-design/icons';
 import './index.scss';
 
-
-
 class Home extends Component {
     constructor(props) {
         super(props);
