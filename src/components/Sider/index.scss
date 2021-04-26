@@ -1,0 +1,42 @@
+$color: #eee;
+.sider {
+  &-user {
+    padding: 64px 24px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    &-avatar {
+      transform: scale(1.2);
+    }
+
+    &-name {
+      margin-top: 30px;
+      color: $color !important;
+    }
+
+    &-description {
+      color: $color !important;
+      width: 100%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+
+  &-list {
+    cursor: pointer;
+    svg {
+      margin-right: 8px;
+    }
+    >* {
+      margin: 0 auto;
+      color: $color !important;
+    }
+
+    &-active > span {
+      color: cadetblue !important;
+      font-weight: bold;
+    }
+  }
+}
