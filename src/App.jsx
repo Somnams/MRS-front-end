@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import * as React from 'react';
 import {BrowserRouter} from 'react-router-dom';
 import Router from './Router';
@@ -31,6 +32,32 @@ export default class App extends React.Component {
                     </Layout>
                 </BrowserRouter>
             </I18nextProvider>
+=======
+import React, {Component} from 'react';
+import {HashRouter} from 'react-router-dom';
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import {Layout} from "antd";
+import './App.scss';
+
+import Router from './routes';
+
+export default class App extends Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (
+            <HashRouter>
+                <Layout className={'platform'}>
+                    <Header/>
+                    <Layout.Content>
+                        <Router/>
+                    </Layout.Content>
+                    <Footer/>
+                </Layout>
+            </HashRouter>
+>>>>>>> 4143e889332af04ed5e13be855b41b609f4536ad
         );
     }
 }
