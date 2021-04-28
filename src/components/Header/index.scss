@@ -1,22 +1,5 @@
 .header {
-  color: #eee;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-
-  &-title {
-    color: #eee !important;
-    margin: 0 !important;
-  }
-  &-content {
-    > a {
-      margin-left: 16px;
-      &:first-child {
-        margin: 0;
-      }
-    }
-    &-active {
-      color: #eee !important;
-    }
-  }
 }

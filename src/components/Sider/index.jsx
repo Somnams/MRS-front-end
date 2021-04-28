@@ -61,7 +61,7 @@ class Sider extends React.Component {
                             tooltip: 'WQH QWQ TAT TvT QvQ'
                         }}
                     >
-                        ....................WQH.....WQH
+                        .............................................
                     </Typography.Paragraph>
                 </div>
                 <List

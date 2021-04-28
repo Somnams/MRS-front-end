@@ -6,7 +6,9 @@ export default class Footer extends React.Component {
     render() {
         return (
             <Layout.Footer className={'footer'}>
-                <Typography.Text type={'secondary'}>&copy; Somnambulist 2021-4-24</Typography.Text>
+                <Typography.Text type={'secondary'} className={'footer-content'}>
+                    &copy; Somnambulist 2021-4-24
+                </Typography.Text>
             </Layout.Footer>
         );
     };
