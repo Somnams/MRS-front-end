@@ -2,7 +2,7 @@ import * as React from 'react';
 import {WithTranslation} from 'react-i18next';
 
 import {Layout, Avatar, Typography, List} from 'antd';
-import {HomeOutlined, QuestionCircleOutlined} from '@ant-design/icons';
+import {HomeOutlined, QuestionCircleOutlined, UnorderedListOutlined} from '@ant-design/icons';
 import Logo from '../../common/images/logo.jpg';
 import classNames from 'classnames';
 import {withRouter} from 'react-router';
@@ -16,6 +16,10 @@ class Sider extends React.Component {
             href: '/',
             content: 'Home',
             icon: <HomeOutlined/>
+        }, {
+            href: '/music',
+            content: 'Music',
+            icon: <UnorderedListOutlined />
         }, {
             href: '/about',
             content: 'About',
