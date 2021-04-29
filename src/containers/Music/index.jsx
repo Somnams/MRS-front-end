@@ -1,15 +1,19 @@
 import * as React from 'react';
 import axios from '../../request';
 import {Table, Space} from 'antd';
-import RootStore from '../../store/rootStore';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
 
 import './index.scss';
 
+@inject('rootStore')
+@observer
 class Music extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            dataSource: []
+        };
         this.cols = [
             {
                 title: 'id',
@@ -29,31 +33,36 @@ class Music extends React.Component {
                 key: 'action',
                 render: (text, record) => (
                     <Space size={'middle'}>
-                        <a>click</a>
-                        <a>{record.name}</a>
+                        <a>{record.artist}</a>
                     </Space>
                 )
-            }
-        ];
-        this.dataSource = [
-            {
-                key: '1',
-                id: 1,
-                name: 'John Brown',
-                artist: 'GaGa'
             }
         ];
     }
 
     getRecommendList() {
-        // const userId =
-        // axios.get('/music')
-        //     .then(({data}) => {
-        //         console.log(data);
-        //     })
-        //     .catch(e => {
-        //         console.error(e);
-        //     });
+        const userId = this.props.rootStore.userId;
+        if (userId !== 0) {
+            axios.get(`/music/${userId}`)
+                .then(({data}) => {
+                    const a = data.map((val, key) => {
+                        return {
+                            key: `${key}`,
+                            id: key + 1,
+                            name: val.recommend_music,
+                            artist: val.artist
+                        }
+                    });
+                    console.log(this.state.dataSource);
+                    this.setState(prev => {
+                        return {prev: prev.dataSource = a};
+                    });
+                    console.log(this.state.dataSource);
+                })
+                .catch(e => {
+                    console.error(e);
+                });
+        }
     }
 
     initTableSource() {
@@ -94,19 +103,25 @@ class Music extends React.Component {
     }
 
     componentDidMount() {
-        // get list
+        this.getRecommendList();
+    }
+
+    componentWillUnmount() {
+        this.setState = (state, callback) =>{
+            return;
+        }
     }
 
     render() {
+        // const rootStore = this.props.rootStore;
+
         return (
             <div className={'music'}>
-                <Table columns={this.cols} dataSource={this.dataSource} className={'music-list'} />
-                <div className={'music-play'}>play now</div>
-                <h1>{RootStore.userId}</h1>
-                <h1>{RootStore.userIdPlus}</h1>
+                <Table columns={this.cols} dataSource={this.state.dataSource} className={'music-list'} />
+                {/*<div className={'music-play'}>play now</div>*/}
             </div>
         );
     };
 };
 
-export default observer(Music);
+export default Music;

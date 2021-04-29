@@ -1,14 +1,6 @@
-import {observable, computed} from 'mobx';
+import {observable} from 'mobx';
 
-class RootStore {
-    @observable
-    userId = 0;
-
-    @computed
-    get userIdPlus (){
-        return this.userId + 1;
-    }
-}
-
-
-export default new RootStore();
+export default observable({
+    // userId: window.localStorage.getItem('mrs-storage') || 0
+    userId: 1
+});

@@ -3,6 +3,7 @@ import {Switch, Route} from "react-router";
 import Home from "./containers/Home";
 import About from "./containers/About";
 import Music from "./containers/Music";
+import Login from "./components/Login";
 import NotFound from "./containers/NotFound";
 
 export default class Router extends React.Component {
@@ -12,6 +13,7 @@ export default class Router extends React.Component {
                 <Route component={Home} path={'/'} exact />
                 <Route component={About} path={'/about'} />
                 <Route component={Music} path={'/music'} />
+                <Route component={Login} path={'/login'} />
                 <Route component={NotFound} />
             </Switch>
         );
