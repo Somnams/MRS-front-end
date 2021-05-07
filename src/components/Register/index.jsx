@@ -9,7 +9,12 @@ class Register extends React.Component {
     }
 
     onCancel() {
-        console.log('cancel');
+        this.onReset();
+        this.props.cancelregister();
+    }
+
+    onReset() {
+        this.formRef.current.resetFields();
     }
 
     onOk() {
@@ -20,14 +25,16 @@ class Register extends React.Component {
                 axios.post('/users', payload)
                     .then(() => {
                         message.success('Register Success');
-                        window.location.reload();
+                        this.onReset();
+                        this.props.cancelregister();
                     })
                     .catch(e => {
                         message.error(e.message);
                     });
             })
             .catch(e => {
-                console.log(e);
+                console.error(e);
+                message.error(e);
             });
     }
 

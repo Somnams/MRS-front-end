@@ -51,6 +51,10 @@ class Login extends React.Component {
         //     });
     }
 
+    cancelRegister() {
+        this.setState({visible: false});
+    }
+
     render() {
         return (
             <Form
@@ -90,7 +94,7 @@ class Login extends React.Component {
                 <Form.Item>
                     <Button type={'primary'} htmlType={'submit'} className={'login-form-button'}>Log in</Button>
                     Or <a onClick={this.onClickRegister.bind(this)}>register now!</a>
-                    <Register visible={this.state.visible} />
+                    <Register visible={this.state.visible} cancelregister={this.cancelRegister.bind(this)} />
                 </Form.Item>
             </Form>
         );
