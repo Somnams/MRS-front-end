@@ -1,6 +1,6 @@
 import * as React from 'react';
 import axios from '../../request';
-import {Form, Input, Button, Checkbox} from 'antd';
+import {Form, Input, Button, Checkbox, message} from 'antd';
 import {UserOutlined, LockOutlined} from '@ant-design/icons';
 import Register from '../Register';
 import './index.scss';
@@ -30,25 +30,27 @@ class Login extends React.Component {
     }
 
     onClickRegister() {
-        console.log('register');
         this.setState(prev => {
             return {prev: prev.visible = true}
         });
-        const path = '/users';
-        const payload = {};
     }
 
     onFinish(values) {
+        // mrs-storage
         const {username, password} = values;
-        const payload = {username, password};
-        console.log('click finish');
-        // axios.post('/users', payload)
-        //     .then(res => {
-        //         console.log(res);
-        //     })
-        //     .catch(e => {
-        //         console.log(e);
-        //     });
+        const auth = {username, password};
+        axios.post('/tokens', {}, {auth})
+            .then(res => {
+                message.success('Login success.');
+                const {token} = res.data;
+                // save token
+                window.localStorage.setItem('mrs-storage', token);
+                this.props.history.push('/');
+            })
+            .catch(e => {
+                console.log(e);
+                message.error(e);
+            });
     }
 
     cancelRegister() {
