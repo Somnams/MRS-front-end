@@ -117,8 +117,13 @@ class Music extends React.Component {
 
         return (
             <div className={'music'}>
-                <Table columns={this.cols} dataSource={this.state.dataSource} className={'music-list'} />
-                {/*<div className={'music-play'}>play now</div>*/}
+                <Table
+                    columns={this.cols}
+                    dataSource={this.state.dataSource}
+                    className={'music-list'}
+                    scroll={{ y: 300 }}
+                />
+                <div className={'music-play'}>play now</div>
             </div>
         );
     };
