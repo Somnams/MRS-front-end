@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {Pie} from '@ant-design/charts';
 
-// TODO:: total font-size
 export default class UserPie extends React.Component {
     constructor(props) {
         super(props);
@@ -9,37 +8,29 @@ export default class UserPie extends React.Component {
 
     render() {
         const data = [
-            {type: 'man', value: 100},
-            {type: 'women', value: 20},
+            {age: '15-20', sold: 0.43},
+            {age: '20-25', sold: 0.30},
+            {age: '25-30', sold: 0.17},
+            {age: '30-35', sold: 0.10},
         ];
 
         const config = {
-            data: data,
-            angleField: 'value',
-            colorField: 'type',
-            radius: 1,
-            innerRadius: 0.64,
-            meta: {
-                value: {
-                    formatter: function formatter(v) {
-                        return ''.concat(v, 'p');
-                    },
-                },
-            },
+            data,
+            angleField: 'sold',
+            colorField: 'age',
+            radius: 0.8,
+            legend: false,
             label: {
                 type: 'inner',
                 offset: '-50%',
-                style: { textAlign: 'center' },
-                autoRotate: false,
-                content: '{value}',
+                style: {
+                    fill: '#fff',
+                    fontSize: 16,
+                    textAlign: 'center'
+                }
             },
-            interactions: [
-                { type: 'element-selected' },
-                { type: 'element-active' },
-                { type: 'pie-statistic-active' },
-            ],
         };
 
-        return <Pie {...config}/>;
-    };
+        return <Pie {...config} />;
+    }
 }

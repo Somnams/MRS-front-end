@@ -15,8 +15,7 @@ export default class Home extends React.Component {
                     <p className={'home-pv-title'}>PvLine</p>
                     <PvLine />
                 </div>
-                <div className={'home-pie'}>
-                    <p className={'home-pie-title'}>userPie</p>
+                <div className={'home-bottom'}>
                     <UserPie />
                 </div>
             </div>

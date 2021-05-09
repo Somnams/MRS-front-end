@@ -1,13 +1,24 @@
 .home {
+  position: relative;
   margin: 50px 50px 0 50px;
   height: 100%;
 
   &-pv {
     height: 30vh;
+
+    &-title {
+      font-size: 20px;
+      margin-top: -20px;
+    }
   }
 
-  &-pie {
-    width: 200px;
-    height: 200px;
+  &-bottom {
+    position: absolute;
+    border: 1px solid red;
+    bottom: 35px;
+    display: flex;
+    height: 30vh;
+    justify-content: space-between;
   }
+
 }
