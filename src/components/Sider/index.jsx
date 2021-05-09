@@ -6,8 +6,14 @@ import {HomeOutlined, QuestionCircleOutlined, UnorderedListOutlined} from '@ant-
 import Logo from '../../common/images/logo.jpg';
 import classNames from 'classnames';
 import {withRouter} from 'react-router';
-import './index.scss';
 
+import {observer, inject} from 'mobx-react';
+
+import './index.scss';
+import rootStore from "../../store/rootStore";
+
+@inject('rootStore')
+@observer
 class Sider extends React.Component {
     constructor(props) {
         super(props);
@@ -48,6 +54,8 @@ class Sider extends React.Component {
     }
 
     render() {
+        const username = this.props.rootStore.username;
+
         return (
             <Layout.Sider className={'sider'}>
                 <div className={'sider-user'}>
@@ -56,7 +64,7 @@ class Sider extends React.Component {
                         level={5}
                         className={'sider-user-name'}
                    >
-                        Somnambulist
+                        {username}
                     </Typography.Title>
                     <Typography.Paragraph
                         className={'sider-user-description'}

@@ -3,6 +3,7 @@ import axios from '../../request';
 import {Form, Input, Button, Checkbox, message} from 'antd';
 import {UserOutlined, LockOutlined} from '@ant-design/icons';
 import Register from '../Register';
+import rootStore from "../../store/rootStore";
 import './index.scss';
 
 class Login extends React.Component {
@@ -45,6 +46,9 @@ class Login extends React.Component {
                 const {token} = res.data;
                 // save token
                 window.localStorage.setItem('mrs-storage', token);
+                const {user_id, user_name} = JSON.parse(atob(window.localStorage.getItem('mrs-storage').split('.')[1]));
+                rootStore.userId = user_id;
+                rootStore.username = user_name;
                 this.props.history.push('/');
             })
             .catch(e => {

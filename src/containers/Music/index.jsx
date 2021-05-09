@@ -53,53 +53,14 @@ class Music extends React.Component {
                             artist: val.artist
                         }
                     });
-                    console.log(this.state.dataSource);
                     this.setState(prev => {
                         return {prev: prev.dataSource = a};
                     });
-                    console.log(this.state.dataSource);
                 })
                 .catch(e => {
                     console.error(e);
                 });
         }
-    }
-
-    initTableSource() {
-        const columns = [
-            {
-                title: 'id',
-                dataIndex: 'id',
-                key: 'id',
-                render: text => <a>{text}</a>
-            }, {
-                title: 'name',
-                dataIndex: 'name',
-                key: 'name'
-            }, {
-                title: 'artist',
-                dataIndex: 'artist',
-                key: 'artist'
-            }, {
-                title: 'action',
-                key: 'action',
-                render: (text, record) => (
-                    <Space size={'middle'}>
-                        <a>click</a>
-                        <a>{record.name}</a>
-                    </Space>
-                )
-            }
-        ];
-
-        const data = [
-            {
-                key: '1',
-                id: 1,
-                name: 'John Brown',
-                artist: 'GaGa'
-            }
-        ]
     }
 
     componentDidMount() {
@@ -113,8 +74,6 @@ class Music extends React.Component {
     }
 
     render() {
-        // const rootStore = this.props.rootStore;
-
         return (
             <div className={'music'}>
                 <Table
