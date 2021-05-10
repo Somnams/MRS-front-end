@@ -8,9 +8,8 @@ export default class Home extends React.Component {
 
     render() {
         return (
-           <div>
-               <p className="first">Home Sweet Home.</p>
-               <p className="second">Welcome back.</p>
+           <div className={'page home'}>
+               Home view
            </div>
         );
     }

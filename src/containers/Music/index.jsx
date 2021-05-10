@@ -75,8 +75,8 @@ class Music extends React.Component {
 
     render() {
         return (
-            <div className={'music'}>
-                <h3>Music Recommend List</h3>
+            <div className={'page music'}>
+                <p className={'description-text'}>Music Recommend List</p>
                 {/*<Table*/}
                 {/*    columns={this.cols}*/}
                 {/*    dataSource={this.state.dataSource}*/}

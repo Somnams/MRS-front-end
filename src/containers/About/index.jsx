@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './index.scss';
 
 export default class About extends React.Component {
     constructor(props) {
@@ -7,7 +8,7 @@ export default class About extends React.Component {
 
     render() {
         return (
-            <div>About</div>
+            <div className={'page about'}>About</div>
         );
     }
 }
