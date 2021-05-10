@@ -6,8 +6,8 @@ export default class NotFound extends React.Component {
     }
     render() {
         return (
-            <div>
-                404
+            <div className={'page'}>
+                <p className={'description-text'}>404 not found</p>
             </div>
         );
     };

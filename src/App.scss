@@ -1,12 +1,14 @@
 * {
   transition: all 1s cubic-bezier(0.5, -0.005, 0.2, 1);
 }
+
 body {
   background: radial-gradient(#ffa500, #f33, #800080);
   color: #fff;
   font-family: raleway, sans-serif;
   overflow: hidden;
 }
+
 main {
   display: flex;
   align-items: stretch;
@@ -15,9 +17,11 @@ main {
   width: 400%;
   position: relative;
 }
+
 .description-text {
   animation: move 1s cubic-bezier(0.5, -0.005, 0.2, 1);
 }
+
 @keyframes move {
   from {
     transform: translateX(360%);
@@ -26,6 +30,7 @@ main {
     transform: translateX(0);
   }
 }
+
 .page {
   width: 100vw;
   display: flex;
