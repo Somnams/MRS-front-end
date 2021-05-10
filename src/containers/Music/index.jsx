@@ -64,7 +64,7 @@ class Music extends React.Component {
     }
 
     componentDidMount() {
-        this.getRecommendList();
+        // this.getRecommendList();
     }
 
     componentWillUnmount() {
@@ -77,14 +77,14 @@ class Music extends React.Component {
         return (
             <div className={'music'}>
                 <h3>Music Recommend List</h3>
-                <Table
-                    columns={this.cols}
-                    dataSource={this.state.dataSource}
-                    scroll={{ y: 350 }}
-                    className={'music-list'}
-                    pagination={false}
-                />
-                <div className={'music-play'}>play now</div>
+                {/*<Table*/}
+                {/*    columns={this.cols}*/}
+                {/*    dataSource={this.state.dataSource}*/}
+                {/*    scroll={{ y: 350 }}*/}
+                {/*    className={'music-list'}*/}
+                {/*    pagination={false}*/}
+                {/*/>*/}
+                {/*<div className={'music-play'}>play now</div>*/}
             </div>
         );
     };

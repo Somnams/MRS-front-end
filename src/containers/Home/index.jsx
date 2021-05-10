@@ -9,7 +9,8 @@ export default class Home extends React.Component {
     render() {
         return (
            <div>
-               Music list
+               <p className="first">Home Sweet Home.</p>
+               <p className="second">Welcome back.</p>
            </div>
         );
     }

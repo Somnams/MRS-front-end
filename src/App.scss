@@ -1,3 +1,28 @@
-.content {
-  height: 100vh;
+* {
+  transition: all 1s cubic-bezier(0.5, -0.005, 0.2, 1);
+}
+body {
+  background: radial-gradient(#ffa500, #f33, #800080);
+  color: #fff;
+  font-family: raleway, sans-serif;
+  overflow: hidden;
+}
+main {
+  display: flex;
+  align-items: stretch;
+  align-content: stretch;
+  justify-content: flex-start;
+  width: 400%;
+  position: relative;
+}
+.description-text {
+  animation: move 1s cubic-bezier(0.5, -0.005, 0.2, 1);
+}
+@keyframes move {
+  from {
+    transform: translateX(360%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }

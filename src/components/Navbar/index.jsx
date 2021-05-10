@@ -10,7 +10,7 @@ class Nav extends React.Component {
         super(props);
 
         this.menuList = [{
-            href: '/',
+            href: '/home',
             content: 'Home',
             icon: <HomeOutlined/>
         }, {

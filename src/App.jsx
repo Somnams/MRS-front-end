@@ -4,6 +4,7 @@ import Router from './Router';
 import {I18nextProvider} from 'react-i18next';
 import { Provider } from 'mobx-react';
 
+import Nav from "./components/Navbar";
 import {Layout} from 'antd';
 import Header from './components/Header';
 import Sider from './components/Sider';
@@ -23,7 +24,10 @@ export default class App extends React.Component {
             <I18nextProvider>
                 <Provider rootStore={RootStore}>
                     <BrowserRouter>
-                        <Router />
+                        <main>
+                            <Nav/>
+                            <Router/>
+                        </main>
                         {/*<Layout className={'content'}>*/}
                         {/*    <Sider/>*/}
                         {/*    <Layout>*/}

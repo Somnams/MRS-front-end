@@ -12,6 +12,7 @@ export default class Router extends React.Component {
         return (
             <Switch>
                 <Route component={Root} path={'/'} exact />
+                <Route component={Home} path={'/home'} />
                 <Route component={About} path={'/about'} />
                 <Route component={Music} path={'/music'} />
                 <Route component={Login} path={'/login'} />

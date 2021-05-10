@@ -1,11 +1,7 @@
-$borderColor: #ddd;
-$listShadowColor: #000;
-
 .music {
-  margin: 50px 50px 0 50px;
-
-  &-list {
-    border: 1px solid $borderColor;
-    box-shadow: 8px 10px 5px $listShadowColor;
+  background: rgba(0, 0, 255, 0.6);
+  >p {
+    transform: translateX(0);
+    transition-delay: 0.5s;
   }
 }
