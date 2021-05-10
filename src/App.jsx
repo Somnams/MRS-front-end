@@ -23,16 +23,17 @@ export default class App extends React.Component {
             <I18nextProvider>
                 <Provider rootStore={RootStore}>
                     <BrowserRouter>
-                        <Layout className={'content'}>
-                            <Sider/>
-                            <Layout>
-                                <Header/>
-                                <Layout.Content>
-                                    <Router/>
-                                </Layout.Content>
-                                <Footer/>
-                            </Layout>
-                        </Layout>
+                        <Router />
+                        {/*<Layout className={'content'}>*/}
+                        {/*    <Sider/>*/}
+                        {/*    <Layout>*/}
+                        {/*        <Header/>*/}
+                        {/*        <Layout.Content>*/}
+                        {/*            <Router/>*/}
+                        {/*        </Layout.Content>*/}
+                        {/*        <Footer/>*/}
+                        {/*    </Layout>*/}
+                        {/*</Layout>*/}
                     </BrowserRouter>
                 </Provider>
             </I18nextProvider>

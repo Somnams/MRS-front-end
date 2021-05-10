@@ -1,6 +1,4 @@
 import * as React from 'react';
-import PvLine from '../../components/Pv';
-import UserPie from '../../components/Users';
 import './index.scss';
 
 export default class Home extends React.Component {
@@ -10,15 +8,9 @@ export default class Home extends React.Component {
 
     render() {
         return (
-            <div className={'home'}>
-                <div className={'home-pv'}>
-                    <p className={'home-pv-title'}>PvLine</p>
-                    <PvLine />
-                </div>
-                <div className={'home-bottom'}>
-                    <UserPie />
-                </div>
-            </div>
+           <div>
+               Music list
+           </div>
         );
-    };
+    }
 };

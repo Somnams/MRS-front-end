@@ -76,11 +76,13 @@ class Music extends React.Component {
     render() {
         return (
             <div className={'music'}>
+                <h3>Music Recommend List</h3>
                 <Table
                     columns={this.cols}
                     dataSource={this.state.dataSource}
+                    scroll={{ y: 350 }}
                     className={'music-list'}
-                    scroll={{ y: 300 }}
+                    pagination={false}
                 />
                 <div className={'music-play'}>play now</div>
             </div>
