@@ -1,0 +1,37 @@
+$shadowColor: rgba(0, 0, 0, 0.8);
+
+.music-card {
+  height: 100%;
+
+  &-list {
+    margin-left: 40px;
+    margin-right: 100px;
+    background: rgba(255,192,203,0.5);
+    line-height: 16px;
+    font-size: 12px;
+    width: 228px;
+    border-radius: 8px;
+    box-shadow: 8px 8px 8px $shadowColor;
+
+    animation: cardMove 0.8s;
+
+    &-item {
+      padding-left: 25px;
+      color: #fff;
+      text-shadow: 2px 4px 2px $shadowColor;
+
+      &-a {
+        padding-left: 15px;
+      }
+    }
+  }
+}
+
+@keyframes cardMove {
+  from {
+    transform: translateY(200%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
