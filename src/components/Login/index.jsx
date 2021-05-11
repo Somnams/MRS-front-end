@@ -1,10 +1,11 @@
 import * as React from 'react';
 import axios from '../../request';
-import {Form, Input, Button, Checkbox, message} from 'antd';
+import {Form, Input, Button, message} from 'antd';
 import {UserOutlined, LockOutlined} from '@ant-design/icons';
 import Register from '../Register';
-import rootStore from "../../store/rootStore";
+import rootStore from '../../store/rootStore';
 import './index.scss';
+import {Link} from "react-router-dom";
 
 class Login extends React.Component {
     constructor(props) {
@@ -50,7 +51,7 @@ class Login extends React.Component {
                 user_id > 5 && (user_id = 10);
                 rootStore.userId = user_id;
                 rootStore.username = user_name;
-                this.props.history.push('/');
+                this.props.history.replace('/');
             })
             .catch(e => {
                 console.log(e);
@@ -64,46 +65,42 @@ class Login extends React.Component {
 
     render() {
         return (
-            <Form
-                className={'login-form'}
-                initialValues={{remember: true}}
-                onFinish={this.onFinish.bind(this)}
-            >
-                <Form.Item
-                    name={'username'}
-                    rules={[
-                        {required: true, message: 'Please input your Username!'}
-                    ]}
+            <div className={'page login'}>
+                <Form
+                    className={'login-form'}
+                    initialValues={{remember: true}}
+                    onFinish={this.onFinish.bind(this)}
                 >
-                    <Input
-                        prefix={<UserOutlined
-                            className={'site-form-item-icon'}/>}
-                        placeholder={'Username'}/>
-                </Form.Item>
-                <Form.Item
-                    name={'password'}
-                    rules={[
-                        {required: true, message: 'Please input your Password'}
-                    ]}
-                >
-                    <Input
-                        prefix={<LockOutlined className={'site-form-item-icon'} />}
-                        type={'password'}
-                        placeholder={'Password'}
-                    />
-                </Form.Item>
-                <Form.Item>
-                    <Form.Item name={'remember'} valuePropName={'checked'} noStyle>
-                        <Checkbox>Remember me</Checkbox>
+                    <Form.Item
+                        name={'username'}
+                        rules={[
+                            {required: true, message: 'Please input your Username!'}
+                        ]}
+                    >
+                        <Input
+                            prefix={<UserOutlined
+                                className={'site-form-item-icon'}/>}
+                            placeholder={'Username'}/>
                     </Form.Item>
-                    <a className={'login-form-forgot'}>Forgot password</a>
-                </Form.Item>
-                <Form.Item>
-                    <Button type={'primary'} htmlType={'submit'} className={'login-form-button'}>Log in</Button>
-                    Or <a onClick={this.onClickRegister.bind(this)}>register now!</a>
-                    <Register visible={this.state.visible} cancelregister={this.cancelRegister.bind(this)} />
-                </Form.Item>
-            </Form>
+                    <Form.Item
+                        name={'password'}
+                        rules={[
+                            {required: true, message: 'Please input your Password'}
+                        ]}
+                    >
+                        <Input
+                            prefix={<LockOutlined className={'site-form-item-icon'} />}
+                            type={'password'}
+                            placeholder={'Password'}
+                        />
+                    </Form.Item>
+                    <Form.Item>
+                        <Button ghost htmlType={'submit'} className={'login-form-button'}>Log in</Button>
+                         Or <a className={'login-form-link'} onClick={this.onClickRegister.bind(this)}>register now!</a>
+                        <Register visible={this.state.visible} cancelregister={this.cancelRegister.bind(this)} />
+                    </Form.Item>
+                </Form>
+            </div>
         );
     };
 };

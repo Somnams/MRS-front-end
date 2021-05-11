@@ -20,7 +20,7 @@ export default class App extends React.Component {
                     <BrowserRouter>
                         <main>
                             <Nav/>
-                            <Router/>
+                            <Router />
                         </main>
                     </BrowserRouter>
                 </Provider>
