@@ -1,0 +1,26 @@
+.recommend {
+  width: 180px;
+  border-radius: 5px;
+  position: relative;
+
+  &-icon {
+    position: absolute;
+    bottom: 27px;
+    width: 100%;
+    left: 0;
+    background: opacify(transparent, 0.3);
+
+    .ant-card-meta-description {
+      color: #fff;
+    }
+  }
+  &-meta {
+  }
+  .ant-card-body {
+    padding: 5px;
+  }
+}
+
+//.recommend:hover {
+//  box-shadow: 0 0 20px #000;
+//}

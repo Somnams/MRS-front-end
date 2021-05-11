@@ -1,7 +1,15 @@
 .music {
   background: rgba(0, 0, 255, 0.6);
-  >p {
-    transform: translateX(0);
-    transition-delay: 0.5s;
+
+  &-main {
+    height: 100%;
+    width: 100%;
+    padding-left: 18%;
+    padding-right: 20px;
+    border: 2px saddlebrown solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
+
 }

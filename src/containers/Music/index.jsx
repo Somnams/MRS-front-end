@@ -2,6 +2,7 @@ import * as React from 'react';
 import axios from '../../request';
 import {Table, Space} from 'antd';
 import {observer, inject} from 'mobx-react';
+import RecommendList from "../../components/RecommendList";
 
 import './index.scss';
 
@@ -76,7 +77,13 @@ class Music extends React.Component {
     render() {
         return (
             <div className={'page music'}>
-                <p className={'description-text'}>Music Recommend List</p>
+                <div className={'music-main'}>
+                    <div>
+                        <p className={'description-text'}>RECOMMEND LIST</p>
+                        <RecommendList />
+                    </div>
+                </div>
+                {/*<p className={'description-text'}>Music Recommend List</p>*/}
                 {/*<Table*/}
                 {/*    columns={this.cols}*/}
                 {/*    dataSource={this.state.dataSource}*/}
@@ -88,6 +95,6 @@ class Music extends React.Component {
             </div>
         );
     };
-};
+}
 
 export default Music;
