@@ -8,7 +8,7 @@ $shadowColor: rgba(0, 0, 0, 0.8);
     margin-right: 100px;
     background: rgba(255,192,203,0.5);
     line-height: 16px;
-    font-size: 12px;
+    font-weight: bold;
     width: 228px;
     border-radius: 8px;
     box-shadow: 8px 8px 8px $shadowColor;
@@ -17,8 +17,6 @@ $shadowColor: rgba(0, 0, 0, 0.8);
 
     &-item {
       padding-left: 25px;
-      color: #fff;
-      text-shadow: 2px 4px 2px $shadowColor;
 
       &-a {
         padding-left: 15px;

@@ -1,51 +1,67 @@
 import * as React from 'react';
-import {Modal, List, Tag, Avatar} from 'antd';
+import {Modal, List, Typography, Avatar, Skeleton, Table, Button} from 'antd';
+import { useTranslation } from 'react-i18next';
+import {PlayCircleOutlined, HeartOutlined} from '@ant-design/icons';
 import './index.scss';
 
-class DetailList extends React.Component {
-    constructor(props) {
-        super(props);
+function DetailList(props) {
+    const columns = React.useMemo(() => [{
+        render(_, record) {
+            return <Avatar src={'http://p1.music.126.net/ReF_unoFwy7jJT_vmHJ-zg==/109951164972836700.jpg?param=140y140'} />
+        },
+        width: 48
+    }, {
+        title: 'artist',
+        dataIndex: 'artist',
+        width: 200
+    }, {
+        title: 'song',
+        dataIndex: 'recommend_music',
+        render(song) {
+            return (
+                <Typography.Paragraph
+                    ellipsis={{
+                        tooltip: true
+                    }}
+                    className={'detail-modal-table-music'}
+                >
+                    {song}
+                </Typography.Paragraph>
+            );
+        },
+    }, {
+        render() {
+            // !!
+            return (
+                <>
+                    <PlayCircleOutlined /> <HeartOutlined />
+                </>
+            );
+        },
+        width: 80
+    }], []);
 
-        this.state = {
-            visible: true
-        };
-    }
+    const renderTable = React.useMemo(() => (
+        <Table
+            className={'detail-modal-table'}
+            dataSource={props.data}
+            columns={columns}
+            scroll={{y: 260}}
+            pagination={false}
+        />
+    ), [props.data]);
 
-    renderItem(item) {
-        return (
-            <List.Item className={'detail-modal-list'}
-                actions={[<a key="list-loadmore-edit">edit</a>, <a key="list-loadmore-more">more</a>]}
-            >
-                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                <div className={'detail-modal-list-name'}>
-                    {item.name}
-                </div>
-                <div className={'detail-modal-list-name'}>{item.name}{item.name}</div>
-            </List.Item>
-        );
-    }
-
-    render() {
-        const list = [
-            {name: 'this is a music'},
-            {name: 'this is a music'},
-            {name: 'this is a music'}
-            ];
-        return (
-            <Modal
-                className={'detail-modal'}
-                title="Basic Modal"
-                visible={this.state.visible}
-                footer={null}
-            >
-                <List
-                    itemLayout={'horizontal'}
-                    dataSource={list}
-                    renderItem={this.renderItem.bind(this)}
-                />
-            </Modal>
-        );
-    }
+    return (
+        <Modal
+            className={'detail-modal'}
+            title="Song list details"
+            visible={props.visible}
+            footer={null}
+            onCancel={props.changeVisible.bind(this)}
+        >
+            {renderTable}
+        </Modal>
+    );
 }
 
 export default DetailList;

@@ -5,11 +5,21 @@
     height: 100%;
     width: 100%;
     padding-left: 18%;
-    padding-right: 20px;
+    //padding-right: 20px;
     border: 2px saddlebrown solid;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+    flex-wrap: wrap;
+    justify-content: flex-end;
 
+
+    &-list {
+      padding-top: 25px;
+      width: 24%;
+      max-width: 33.3%; // 加入这两个后每个item的宽度就生效了
+
+      &-card {
+        border: 2px solid black;
+      }
+    }
+  }
 }

@@ -1,10 +1,14 @@
 import * as React from 'react';
 import axios from '../../request';
-import {Table, Space} from 'antd';
+import {Space} from 'antd';
 import {observer, inject} from 'mobx-react';
-import RecommendList from "../../components/RecommendList";
+import RecommendList from "../../components/ProfileCard";
+import { shuffle } from 'lodash-es';
+import IMAGES from '../../common/images/musicAvatar';
 
 import './index.scss';
+
+const shuffledImages = shuffle(IMAGES).slice(8);
 
 @inject('rootStore')
 @observer
@@ -64,10 +68,6 @@ class Music extends React.Component {
         }
     }
 
-    componentDidMount() {
-        // this.getRecommendList();
-    }
-
     componentWillUnmount() {
         this.setState = (state, callback) =>{
             return;
@@ -75,23 +75,25 @@ class Music extends React.Component {
     }
 
     render() {
+        const collections = Array(8).fill({
+            listType: 'recommend',
+            title: 'Profile'
+        });
+
         return (
             <div className={'page music'}>
                 <div className={'music-main'}>
-                    <div>
-                        <p className={'description-text'}>RECOMMEND LIST</p>
-                        <RecommendList />
-                    </div>
+                    {collections.map((item, index) => (
+                        <div className={'music-main-list'}>
+                            <p className={'description-text'}>{item.title}</p>
+                            <RecommendList
+                                listType={item.listType}
+                                coverSrc={shuffledImages[index]}
+                                className={'music-main-list-card'}
+                            />
+                        </div>
+                    ))}
                 </div>
-                {/*<p className={'description-text'}>Music Recommend List</p>*/}
-                {/*<Table*/}
-                {/*    columns={this.cols}*/}
-                {/*    dataSource={this.state.dataSource}*/}
-                {/*    scroll={{ y: 350 }}*/}
-                {/*    className={'music-list'}*/}
-                {/*    pagination={false}*/}
-                {/*/>*/}
-                {/*<div className={'music-play'}>play now</div>*/}
             </div>
         );
     };

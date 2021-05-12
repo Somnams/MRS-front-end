@@ -1,20 +1,22 @@
+$backgroundColor: rgba(255, 255, 255, 0.6);
+
 .detail-modal {
   width: 50vw !important;
   .ant-modal-content {
-    background: rgba(255, 255, 255, 0.6);
+    background: $backgroundColor;
     .ant-modal-header {
-      background: rgba(255, 255, 255, 0.6);
+      background: $backgroundColor;
     }
   }
 
-  &-list {
-    border-bottom: none !important;
-    height: 24px;
-    display: flex;
-    margin-bottom: 10px;
-
-    &-name {
-      margin-left: -70px;
+  &-table {
+    .ant-table {
+      background: $backgroundColor;
+    }
+    &-music {
+      margin-bottom: 0 !important;
+      line-height: 16px;
+      width: 300px !important;
     }
   }
 }
