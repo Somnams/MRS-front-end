@@ -1,32 +1,40 @@
 import * as React from 'react';
 import MusicCard from '../../components/MusicCard';
-import { withTranslation } from 'react-i18next';
+import {getNewSong, getPopularSong, getRisingSong} from '../../request/request';
 import './index.scss';
 
-@withTranslation()
-class Home extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
-    render() {
-        return (
-           <div className={'page home'}>
-               <div>
-                   <p className={'home-p'}>飙升榜</p>
-                   <MusicCard />
-               </div>
-               <div>
-                   <p className={'home-p'}>新歌榜</p>
-                   <MusicCard />
-               </div>
-               <div>
-                   <p className={'home-p'}>原创榜</p>
-                   <MusicCard />
-               </div>
-           </div>
-        );
-    }
+function Home() {
+    const [musicData, setMusicData] = React.useState([]);
+
+    React.useEffect(() => {
+        getMusicData();
+    }, []);
+
+    const getMusicData = async () => {
+        const data = await Promise.all([getRisingSong(), getNewSong(), getPopularSong()]);
+        const result = data.map(item => item.data.result.tracks);
+        setMusicData(result);
+    };
+
+    const renderCard = React.useMemo(() => {
+        const types = ['Rising', 'New', 'Popular'];
+
+        return musicData.map((item, index) => {
+            return (
+                <div>
+                    <p className={'description-text home-p'}>{types[index]}</p>
+                    <MusicCard data={item} />
+                </div>
+            );
+        });
+    }, [musicData])
+
+    return (
+        <div className={'page home'}>
+            {renderCard}
+        </div>
+    );
 }
 
 export default Home;
