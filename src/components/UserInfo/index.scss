@@ -1,0 +1,70 @@
+.test-tag {
+  animation: tagMove 2s infinite;
+}
+
+@keyframes tagMove {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.user {
+  padding-top: 20px;
+
+  &-list {
+    width: 500px;
+    height: 188px;
+    display: flex;
+    justify-content: space-between;
+
+    &-desc {
+      flex: 2;
+      margin-left: 20px;
+      position: relative;
+
+      &-username {
+        color: #eee;
+        font-size: 24px;
+        border-bottom: 1px #eee solid;
+        >* {
+          margin-left: 5px;
+        }
+      }
+      &-dt {
+        display: flex;
+        justify-content: space-around;
+        >span {
+          padding-right: 40px;
+          padding-left: 30px;
+          border-right: 1px #eee solid;
+        }
+        span:last-child {
+          border: none;
+        }
+      }
+      &-detail {
+        font-size: 14px;
+      }
+      &-content {
+        border-top: 1px #eee solid;
+        position: absolute;
+        top: 120px;
+        font-size: 20px;
+        width: 650px;
+      }
+    }
+
+    &-avatar {
+      margin: 40px;
+      transform: scale(3);
+    }
+  }
+
+
+}

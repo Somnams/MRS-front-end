@@ -1,5 +1,6 @@
 import * as React from 'react';
 import MusicCard from '../../components/MusicCard';
+import MusicPlayer from "../../components/MusicPlayer";
 import {getNewSong, getPopularSong, getRisingSong} from '../../request/request';
 import './index.scss';
 
@@ -33,6 +34,7 @@ function Home() {
     return (
         <div className={'page home'}>
             {renderCard}
+            <MusicPlayer />
         </div>
     );
 }

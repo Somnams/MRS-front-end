@@ -9,14 +9,14 @@ $shadowColor: rgba(0, 0, 0, 0.8);
     background: rgba(255,192,203,0.5);
     line-height: 16px;
     font-weight: bold;
-    width: 228px;
+    width: 260px;
     border-radius: 8px;
     box-shadow: 4px 8px 9px -4px $shadowColor;
 
     animation: cardMove 0.8s;
 
     &-actions {
-      width: 90px;
+      width: 100px;
       display: flex;
       justify-content: space-around;
     }

@@ -1,8 +1,6 @@
 import * as React from 'react';
 import {Card} from 'antd';
 import {PlayCircleOutlined} from '@ant-design/icons';
-import axios from '../../request';
-import rootStore from '../../store/rootStore';
 import DetailList from "../DetailList";
 import './index.scss';
 
@@ -14,31 +12,19 @@ class RecommendList extends React.Component {
             visible: false,
             dataSource: []
         };
+
+        this.dic = [
+            '每日歌曲推荐',
+            '根据听歌记录为你打造',
+            'item',
+            'chang '
+        ];
     }
 
     showDetailList() {
         this.setState(prev => {
             return {prev: prev.visible = true}
         });
-        this.getSongList();
-    }
-
-    getSongList() {
-        const dic = {
-            recommend: '/music'
-        };
-        const path = `${dic[this.props.listType]}/${rootStore.userId}`;
-
-        axios.get(path)
-            .then(({data}) => {
-                this.setState(prev => {
-                    return {prev: prev.dataSource = data};
-                });
-                return data;
-            })
-            .catch(e => {
-                console.log(e);
-            });
     }
 
     cancelDetailList() {
@@ -48,8 +34,6 @@ class RecommendList extends React.Component {
     }
 
     render() {
-        const dataSrc = 'http://p2.music.126.net/fob5pHV3xzGlJ_-KEeLFLg==/109951165693966983.jpg?param=140y140';
-        const a = 'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png';
         return (
             <div>
                 <Card
@@ -63,14 +47,14 @@ class RecommendList extends React.Component {
                         className={'recommend-icon'}
                     />
                     <Card.Meta
-                        description={'想你了 其实我也很脆弱'}
+                        description={this.dic[this.props.desc]}
                         className={'recommend-meta'}
                     />
                 </Card>
                 <DetailList
                     changeVisible={this.cancelDetailList.bind(this)}
                     visible={this.state.visible}
-                    data={this.state.dataSource}
+                    data={this.props.data}
                 />
             </div>
         );

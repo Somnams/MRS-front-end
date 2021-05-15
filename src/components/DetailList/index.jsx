@@ -1,13 +1,12 @@
 import * as React from 'react';
-import {Modal, List, Typography, Avatar, Skeleton, Table, Button} from 'antd';
-import { useTranslation } from 'react-i18next';
-import {PlayCircleOutlined, HeartOutlined} from '@ant-design/icons';
+import {Modal, Typography, Avatar, Table, Button} from 'antd';
+import {PlayCircleTwoTone, HeartTwoTone} from '@ant-design/icons';
 import './index.scss';
 
 function DetailList(props) {
     const columns = React.useMemo(() => [{
         render(_, record) {
-            return <Avatar src={'http://p1.music.126.net/ReF_unoFwy7jJT_vmHJ-zg==/109951164972836700.jpg?param=140y140'} />
+            return <Avatar src={'http://p3.music.126.net/Uk2n3ATMpuq2nl08IkL4bQ==/109951165803262106.jpg?param=140y140'} />
         },
         width: 48
     }, {
@@ -31,10 +30,10 @@ function DetailList(props) {
         },
     }, {
         render() {
-            // !!
             return (
                 <>
-                    <PlayCircleOutlined /> <HeartOutlined />
+                    <Button icon={<PlayCircleTwoTone />} size={'small'}/>
+                    <Button icon={<HeartTwoTone />} size={'small'} />
                 </>
             );
         },

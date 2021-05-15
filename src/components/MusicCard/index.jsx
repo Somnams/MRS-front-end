@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {List, Typography, Badge, Card} from 'antd';
+import {List, Typography, Badge, Button} from 'antd';
 import {PlayCircleTwoTone, HeartTwoTone, DownCircleTwoTone} from '@ant-design/icons';
 
 import './index.scss';
@@ -7,6 +7,12 @@ import './index.scss';
 function MusicCard(props) {
     const data = props.data.slice(0, 10);
     const first = props.data[0].name;
+
+    const musicPlayer = item => {
+        console.log('click');
+        console.log(item);
+    }
+
     const renderListItem = item => {
         const Item = () => {
             return (
@@ -20,13 +26,14 @@ function MusicCard(props) {
                         {item.name}
                     </Typography.Text>
                     <div className={'music-card-list-actions'}>
-                        <a href="#" title={'play'} className={'music-card-list-item-a'}><PlayCircleTwoTone twoToneColor="#eb2f96" /></a>
-                        <a href="#" title={'like'} className={'music-card-list-item-a'}><HeartTwoTone twoToneColor="#eb2f96" /></a>
-                        <a href="#" title={'download'} className={'music-card-list-item-a'}><DownCircleTwoTone twoToneColor="#eb2f96" /></a>
+                        <Button icon={<PlayCircleTwoTone twoToneColor="#eb2f96" />} onClick={() => musicPlayer(item)} size={'small'}/>
+                        <Button icon={<HeartTwoTone twoToneColor="#eb2f96" />} onClick={() => musicPlayer(item)} size={'small'} />
+                        <Button icon={<DownCircleTwoTone twoToneColor="#eb2f96" />} onClick={() => musicPlayer(item)} size={'small'} />
                     </div>
                 </List.Item>
             );
         };
+
         return (
             item.name === first
                 ?
