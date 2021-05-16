@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {observer, inject} from 'mobx-react';
-import RecommendList from "../../components/ProfileCard";
-import UserInfo from "../../components/UserInfo";
+import RecommendList from '../../components/ProfileCard';
+import UserInfo from '../../components/UserInfo';
 import { shuffle, chunk } from 'lodash-es';
 import {getRecommendList, getSongHistory} from '../../request/request';
 import IMAGES from '../../common/images/musicAvatar';
@@ -25,22 +25,23 @@ class Music extends React.Component {
         const [{data: reData}, {data: hData}] = await Promise.all([getRecommendList(userId), getSongHistory(userId)]);
         const {singer_song: songs} = reData.pop();
         const chunkedData = chunk(reData, 20);
-
+        // recommend songs
         const singerSongs = shuffle(
             songs
                 .map(parse => parse.code === 200 ? parse.result.songs : null)
                 .filter(i => !!i)
                 .reduce((a, b) => a.concat(b), [])
                 .slice(0, 20)
-        ).map((item, index) => {
+        ).map(item => {
             const params = {
-                recommend_id: index,
+                isTitle: true,
+                recommend_id: item.id,
                 recommend_music: item.name,
                 artist: item.artists[0].name
             };
             return params;
         });
-
+        // history songs
         const res = hData.map((item, index) => {
             return {
                 recommend_id: index,

@@ -2,6 +2,7 @@ import * as React from 'react';
 import {List, Typography, Badge, Button} from 'antd';
 import {PlayCircleTwoTone, HeartTwoTone, DownCircleTwoTone} from '@ant-design/icons';
 
+import {inject, observer} from 'mobx-react';
 import './index.scss';
 
 function MusicCard(props) {
@@ -9,14 +10,15 @@ function MusicCard(props) {
     const first = props.data[0].name;
 
     const musicPlayer = item => {
-        console.log('click');
-        console.log(item);
+        props.rootStore.clickPlay(item);
     }
 
     const renderListItem = item => {
         const Item = () => {
             return (
-                <List.Item>
+                <List.Item
+                    className={props.rootStore.playerState && 'music-card-list-item'}
+                >
                     <Typography.Text
                         ellipsis={{
                             tooltip: true
@@ -26,7 +28,10 @@ function MusicCard(props) {
                         {item.name}
                     </Typography.Text>
                     <div className={'music-card-list-actions'}>
-                        <Button icon={<PlayCircleTwoTone twoToneColor="#eb2f96" />} onClick={() => musicPlayer(item)} size={'small'}/>
+                        <Button icon={<PlayCircleTwoTone twoToneColor="#eb2f96" />}
+                                onClick={() => musicPlayer(item)}
+                                size={'small'}
+                        />
                         <Button icon={<HeartTwoTone twoToneColor="#eb2f96" />} onClick={() => musicPlayer(item)} size={'small'} />
                         <Button icon={<DownCircleTwoTone twoToneColor="#eb2f96" />} onClick={() => musicPlayer(item)} size={'small'} />
                     </div>
@@ -56,4 +61,5 @@ function MusicCard(props) {
     );
 }
 
-export default MusicCard;
+// export default MusicCard;
+export default inject('rootStore')(observer(MusicCard));

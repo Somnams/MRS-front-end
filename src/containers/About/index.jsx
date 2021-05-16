@@ -5,7 +5,7 @@ import './index.scss';
 function About() {
     return (
         <div className={'page about'}>
-            <div className={'about-view'}>
+            <div className={'about-view description-text'}>
                 <Avatar size={'large'} shape="square" className={'about-view-ava'}
                     src={'http://p4.music.126.net/Gp-zldmGPcJLj8kw1QnGAw==/109951165691131416.jpg?param=140y140'}
                 />

@@ -7,6 +7,7 @@ import Nav from "./components/Navbar";
 import RootStore from './store/rootStore';
 
 import './App.scss';
+import MusicPlayer from "./components/MusicPlayer";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -20,6 +21,7 @@ export default class App extends React.Component {
                     <BrowserRouter>
                         <main>
                             <Nav/>
+                            <MusicPlayer />
                             <Router />
                         </main>
                     </BrowserRouter>

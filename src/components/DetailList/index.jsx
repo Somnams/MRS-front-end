@@ -1,11 +1,13 @@
 import * as React from 'react';
 import {Modal, Typography, Avatar, Table, Button} from 'antd';
 import {PlayCircleTwoTone, HeartTwoTone} from '@ant-design/icons';
+import {getSearch} from '../../request/request';
+import {inject, observer} from 'mobx-react';
 import './index.scss';
 
 function DetailList(props) {
     const columns = React.useMemo(() => [{
-        render(_, record) {
+        render() {
             return <Avatar src={'http://p3.music.126.net/Uk2n3ATMpuq2nl08IkL4bQ==/109951165803262106.jpg?param=140y140'} />
         },
         width: 48
@@ -29,10 +31,10 @@ function DetailList(props) {
             );
         },
     }, {
-        render() {
+        render(record) {
             return (
                 <>
-                    <Button icon={<PlayCircleTwoTone />} size={'small'}/>
+                    <Button onClick={() => clickToStart(record)} icon={<PlayCircleTwoTone />} size={'small'}/>
                     <Button icon={<HeartTwoTone />} size={'small'} />
                 </>
             );
@@ -40,6 +42,22 @@ function DetailList(props) {
         width: 80
     }], []);
 
+    const clickToStart = item => {
+        const record = {name: item.recommend_music};
+        if (item.isTitle) {
+            record.id = item.recommend_id;
+            props.rootStore.clickPlay(record);
+        } else {
+            getSearch(item.recommend_music)
+                .then(({data}) => {
+                    record.id = data.result.songs[0].id;
+                    props.rootStore.clickPlay(record);
+                })
+                .catch(e => {
+                    console.error(e);
+                });
+        }
+    };
     const renderTable = React.useMemo(() => (
         <Table
             className={'detail-modal-table'}
@@ -63,4 +81,4 @@ function DetailList(props) {
     );
 }
 
-export default DetailList;
+export default inject('rootStore')(observer(DetailList));

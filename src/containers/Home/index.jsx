@@ -1,8 +1,8 @@
 import * as React from 'react';
 import MusicCard from '../../components/MusicCard';
-import MusicPlayer from "../../components/MusicPlayer";
 import {getNewSong, getPopularSong, getRisingSong} from '../../request/request';
 import './index.scss';
+import {observer, inject} from 'mobx-react';
 
 
 function Home() {
@@ -34,9 +34,8 @@ function Home() {
     return (
         <div className={'page home'}>
             {renderCard}
-            <MusicPlayer />
         </div>
     );
 }
 
-export default Home;
+export default inject('rootStore')(observer(Home));

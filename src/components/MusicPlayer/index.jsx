@@ -1,13 +1,23 @@
 import * as React from 'react';
+import {inject, observer} from 'mobx-react';
+import {message} from 'antd';
+
 import './index.scss';
 
 function MusicPlayer(props) {
-    const url = props.url;
+    const audioRef = React.createRef();
+    React.useEffect(() => {
+        audioRef.current.src = props.rootStore.playerURL;
+        if (!props.rootStore.playerURL) {
+            message.error('版权问题，暂不可播放');
+        }
+    }, [props.rootStore.playerURL]);
     return (
-        <audio controls className={'player'}>
-            <source src={url} type={'audio/mpeg'}/>
-        </audio>
+        <div className={'player'}>
+            <audio ref={audioRef} controls autoPlay />
+            <div className={'player-name'}>{props.rootStore.playerSong}</div>
+        </div>
     );
 }
 
-export default MusicPlayer;
+export default inject('rootStore')(observer(MusicPlayer));
