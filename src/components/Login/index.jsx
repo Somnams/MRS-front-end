@@ -51,7 +51,7 @@ class Login extends React.Component {
                 user_id > 5 && (user_id = 10);
                 rootStore.userId = user_id;
                 rootStore.username = user_name;
-                this.props.history.replace('/');
+                this.props.history.replace('/welcome');
             })
             .catch(e => {
                 console.log(e);
