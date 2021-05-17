@@ -43,18 +43,27 @@
           padding-right: 40px;
           padding-left: 30px;
           border-right: 1px #eee solid;
+          position: relative;
+
+          .span-tag {
+            position: absolute;
+            bottom: -10px;
+            font-size: 12px;
+          }
         }
         span:last-child {
           border: none;
         }
       }
       &-detail {
+        margin-top: 15px;
         font-size: 14px;
       }
       &-content {
         border-top: 1px #eee solid;
         position: absolute;
-        top: 120px;
+        top: 130px;
+        padding-top: 10px;
         font-size: 20px;
         width: 650px;
       }

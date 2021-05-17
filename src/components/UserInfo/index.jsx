@@ -1,8 +1,11 @@
 import * as React from 'react';
-import {Avatar, Typography, Tag} from 'antd';
+import {Avatar, Tag} from 'antd';
 import {SettingOutlined} from '@ant-design/icons';
+import {inject, observer} from 'mobx-react';
 import './index.scss';
 
+@inject('rootStore')
+@observer
 class UserInfo extends React.Component {
     constructor(props) {
         super(props);
@@ -21,30 +24,24 @@ class UserInfo extends React.Component {
                  />
                     <div className={'user-list-desc'}>
                         <div className={'user-list-desc-username'}>
-                            Alice
+                            {this.props.rootStore.username}
                             <Tag className={'test-tag'} color="magenta">2000</Tag>
-                            <Tag color="volcano">women</Tag>
+                            <Tag color="volcano">♀</Tag>
                             <Tag color="gold">rapper</Tag>
-                            {/*<Tag color="green">builder</Tag>*/}
                             <Tag color="cyan">cyan</Tag>
                         </div>
                         <div className={'user-list-desc-dt'}>
-                            <span>
-                                0
-                                {/*<Tag className={'test-tag'} color="magenta">mark</Tag>*/}
-                            </span>
-                            <span>0</span>
-                            <span>0</span>
+                            <span>0 <div className={'span-tag'}>Following</div></span>
+                            <span>0 <div className={'span-tag'}>Followers</div></span>
+                            <span>0 <div className={'span-tag'}>Dynamic</div></span>
                             <span><SettingOutlined /></span>
                         </div>
                         <div className={'user-list-desc-detail'}>
                             Address: Xi'an Shanxi
                         </div>
                         <div className={'user-list-desc-content'}>
-                            Ant Design interprets the color system into two levels: a system-level color system and a product-level color system.
-                            Ant Design's design team preferred to design with the HSB color model,
-                            which makes it easier for designers to have a clear psychological expectation of color when adjusting colors,
-                            as well as facilitate communication in teams.
+                            这个人很懒，什么都没有留下 ~ ~
+                            {/*The person was lazy and left nothing behind*/}
                         </div>
                     </div>
                 </div>

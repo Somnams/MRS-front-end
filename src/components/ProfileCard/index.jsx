@@ -14,7 +14,7 @@ class RecommendList extends React.Component {
         };
 
         this.dic = [
-            '每日歌曲推荐',
+            '歌曲推荐',
             '根据听歌记录为你打造',
             '根据你喜欢的单曲推荐',
             '这里有你喜欢的歌手 ',

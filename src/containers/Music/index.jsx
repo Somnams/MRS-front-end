@@ -3,6 +3,7 @@ import {observer, inject} from 'mobx-react';
 import RecommendList from '../../components/ProfileCard';
 import UserInfo from '../../components/UserInfo';
 import { shuffle, chunk } from 'lodash-es';
+import {Spin} from 'antd';
 import {getRecommendList, getSongHistory} from '../../request/request';
 import IMAGES from '../../common/images/musicAvatar';
 
@@ -16,11 +17,13 @@ class Music extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            dataSource: []
+            dataSource: [],
+            loading: false
         };
     }
 
     async getData() {
+        this.setState(prev => prev.loading = true);
         const userId = this.props.rootStore.userId;
         const [{data: reData}, {data: hData}] = await Promise.all([getRecommendList(userId), getSongHistory(userId)]);
         const {singer_song: songs} = reData.pop();
@@ -52,6 +55,8 @@ class Music extends React.Component {
         this.setState(prev => {
             return prev.dataSource = [...chunkedData, singerSongs, res];
         });
+
+        this.setState(prev => prev.loading = false);
     }
 
     componentDidMount() {
@@ -61,28 +66,31 @@ class Music extends React.Component {
     render() {
         const data = this.state.dataSource;
 
+        const title = ['Recommend List', 'Recommend List', 'Recommend List', 'Recommend List', 'History'];
         return (
-            <div className={'page music'}>
-                <div className={'music-main'}>
-                    <div className={'music-main-line'}></div>
-                    {data.map((item, index) => (
-                        <div className={'music-main-list'}>
-                            <p className={'description-text'}>Recommend List</p>
-                            <RecommendList
-                                desc={index}
-                                data={item}
-                                coverSrc={shuffledImages[index]}
-                                className={'music-main-list-card'}
-                            />
-                        </div>
-                    ))}
+            <Spin spinning={this.state.loading} size={'large'}>
+                <div className={'page music'}>
+                    <div className={'music-main'}>
+                        <div className={'music-main-line'}></div>
+                        {data.map((item, index) => (
+                            <div className={'music-main-list'}>
+                                <p className={'description-text'}>{title[index]}</p>
+                                <RecommendList
+                                    desc={index}
+                                    data={item}
+                                    coverSrc={shuffledImages[index]}
+                                    className={'music-main-list-card'}
+                                />
+                            </div>
+                        ))}
 
-                   <div className={'music-main-profile'}>
-                       Profile
-                       <UserInfo />
-                   </div>
+                        <div className={'music-main-profile'}>
+                            Profile
+                            <UserInfo />
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </Spin>
         );
     };
 }

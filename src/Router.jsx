@@ -6,6 +6,7 @@ import About from './containers/About';
 import Music from './containers/Music';
 import NotFound from './containers/NotFound';
 import Root from './containers/Root';
+import Welcome from './containers/Welcome';
 
 import LoginWrapper from './components/LoginWrapper';
 
@@ -23,7 +24,7 @@ class Router extends React.Component {
                         <Route component={Home} path={'/home'} />
                         <Route component={About} path={'/about'} />
                         <Route component={Music} path={'/music'} />
-                        {/*<Route component={Login} path={'/login'} />*/}
+                        <Route component={Welcome} path={'/welcome'} />
                         <Route component={NotFound} />
                     </Switch>
                 </CSSTransition>

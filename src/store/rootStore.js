@@ -1,8 +1,8 @@
 import {observable} from 'mobx';
 import {getSong} from '../request/request';
+import {message} from 'antd';
 
 export default observable({
-    // user_id: window.localStorage.getItem('madblog-token') ? JSON.parse(atob(window.localStorage.getItem('madblog-token').split('.')[1])).user_id : 0
     userId: window.localStorage.getItem('mrs-storage')
         ?
         JSON.parse(atob(window.localStorage.getItem('mrs-storage').split('.')[1]))['user_id']
@@ -25,6 +25,9 @@ export default observable({
             getSong(id)
                 .then(({data}) => {
                     this.playerURL = data.data[0].url;
+                    if (!this.playerURL) {
+                        message.error('版权问题，暂不可播放');
+                    }
                     this.playerState = true;
                     this.playerSong = name;
                 })
@@ -32,11 +35,5 @@ export default observable({
                     console.error(e);
                 });
         }
-    },
-    getSongDetail(song) {
-        console.log(song);
-    },
-    setPlayerState() {
-        console.log('set state');
     }
 });

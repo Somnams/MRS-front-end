@@ -4,6 +4,10 @@ $color: rgba(128,0,128,0.6);
   background: $color;
   padding-left: 20%;
 
+  a {
+    color: #eee;
+  }
+
   &-view {
     border: 2px #eee solid;
     border-radius: 6px;
