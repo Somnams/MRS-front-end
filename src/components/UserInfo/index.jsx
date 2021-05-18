@@ -1,11 +1,13 @@
 import * as React from 'react';
 import {Avatar, Tag} from 'antd';
+import {withTranslation} from 'react-i18next';
 import {SettingOutlined} from '@ant-design/icons';
 import {inject, observer} from 'mobx-react';
 import './index.scss';
 
 @inject('rootStore')
 @observer
+@withTranslation()
 class UserInfo extends React.Component {
     constructor(props) {
         super(props);
@@ -31,9 +33,9 @@ class UserInfo extends React.Component {
                             <Tag color="cyan">cyan</Tag>
                         </div>
                         <div className={'user-list-desc-dt'}>
-                            <span>0 <div className={'span-tag'}>Following</div></span>
-                            <span>0 <div className={'span-tag'}>Followers</div></span>
-                            <span>0 <div className={'span-tag'}>Dynamic</div></span>
+                            <span>0 <div className={'span-tag'}>{this.props.t('Following')}</div></span>
+                            <span>0 <div className={'span-tag'}>{this.props.t('Followers')}</div></span>
+                            <span>0 <div className={'span-tag'}>{this.props.t('Dynamic')}</div></span>
                             <span><SettingOutlined /></span>
                         </div>
                         <div className={'user-list-desc-detail'}>

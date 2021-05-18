@@ -5,7 +5,6 @@ import {UserOutlined, LockOutlined} from '@ant-design/icons';
 import Register from '../Register';
 import rootStore from '../../store/rootStore';
 import './index.scss';
-import {Link} from "react-router-dom";
 
 class Login extends React.Component {
     constructor(props) {
@@ -54,7 +53,6 @@ class Login extends React.Component {
                 this.props.history.replace('/welcome');
             })
             .catch(e => {
-                console.log(e);
                 message.error(e);
             });
     }

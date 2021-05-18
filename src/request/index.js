@@ -1,14 +1,11 @@
 import axios from 'axios';
 import {message} from 'antd';
 
-let hide = null;
-
 axios.defaults.baseURL = 'http://127.0.0.1:5000/api';
 
 // Request interceptors
 axios.interceptors.request.use(config => {
     const token = window.localStorage.getItem('mrs-storage');
-    // hide = message.loading('Loading', 0);
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }
@@ -19,7 +16,6 @@ axios.interceptors.request.use(config => {
 
 // Response interceptors
 axios.interceptors.response.use(response => {
-    // hide();
     return response;
 }, error => {
     if (error.response) {

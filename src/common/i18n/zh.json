@@ -1,5 +1,24 @@
 {
-  "主页": "主页",
-  "关于": "关于",
-  "Home view": "Home View"
+  "Home": "主页",
+  "Music": "音乐",
+  "About": "关于",
+  "Change": "",
+  "Rising": "飙升榜",
+  "New": "新歌榜",
+  "Popular": "流行榜",
+  "Recommend List": "推荐歌单",
+  "History": "听过的歌",
+  "Profile": "个人信息",
+  "Following": "粉丝",
+  "Followers": "关注",
+  "Dynamic": "动态",
+  "song": "歌曲",
+  "artist": "歌手",
+  "Username": "用户名",
+  "Tel": "电话",
+  "description": "简述",
+  "If you have any problems with it, please contact me.": "如果你有什么问题，请联系我",
+  "Feng na": "冯娜",
+  "Details": "详情",
+  "Address": "地址"
 }

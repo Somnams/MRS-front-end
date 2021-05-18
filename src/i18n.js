@@ -9,7 +9,7 @@ export async function initI18nInstance() {
         react: {
             useSuspense: false
         },
-        lng: 'zh',
+        lng: 'eh',
         keySeparator: false,
         resources: {
             zh: {

@@ -1,22 +1,24 @@
 import * as React from 'react';
 import {Modal, Typography, Avatar, Table, Button} from 'antd';
+import {useTranslation} from 'react-i18next';
 import {PlayCircleTwoTone, HeartTwoTone} from '@ant-design/icons';
 import {getSearch} from '../../request/request';
 import {inject, observer} from 'mobx-react';
 import './index.scss';
 
 function DetailList(props) {
+    const {t} = useTranslation();
     const columns = React.useMemo(() => [{
         render() {
             return <Avatar src={'http://p3.music.126.net/Uk2n3ATMpuq2nl08IkL4bQ==/109951165803262106.jpg?param=140y140'} />
         },
         width: 48
     }, {
-        title: 'artist',
+        title: t('artist'),
         dataIndex: 'artist',
         width: 200
     }, {
-        title: 'song',
+        title: t('song'),
         dataIndex: 'recommend_music',
         render(song) {
             return (
@@ -71,7 +73,7 @@ function DetailList(props) {
     return (
         <Modal
             className={'detail-modal'}
-            title="Song list details"
+            title='Details'
             visible={props.visible}
             footer={null}
             onCancel={props.changeVisible.bind(this)}

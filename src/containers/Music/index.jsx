@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {observer, inject} from 'mobx-react';
+import {withTranslation} from 'react-i18next';
 import RecommendList from '../../components/ProfileCard';
 import UserInfo from '../../components/UserInfo';
 import { shuffle, chunk } from 'lodash-es';
@@ -13,6 +14,7 @@ const shuffledImages = shuffle(IMAGES).slice(8);
 
 @inject('rootStore')
 @observer
+@withTranslation()
 class Music extends React.Component {
     constructor(props) {
         super(props);
@@ -57,10 +59,18 @@ class Music extends React.Component {
         });
 
         this.setState(prev => prev.loading = false);
+        this.props.rootStore.musicData = this.state.dataSource;
     }
 
     componentDidMount() {
-        this.getData();
+        const {musicData} = this.props.rootStore;
+        musicData.length === 0 && this.getData();
+        musicData.length !== 0 && (
+            this.setState(prev => {
+                return prev.dataSource = [...musicData];
+            })
+        );
+
     }
 
     render() {
@@ -74,7 +84,7 @@ class Music extends React.Component {
                         <div className={'music-main-line'}></div>
                         {data.map((item, index) => (
                             <div className={'music-main-list'}>
-                                <p className={'description-text'}>{title[index]}</p>
+                                <p className={'description-text'}>{this.props.t(title[index])}</p>
                                 <RecommendList
                                     desc={index}
                                     data={item}
@@ -85,7 +95,7 @@ class Music extends React.Component {
                         ))}
 
                         <div className={'music-main-profile'}>
-                            Profile
+                            {this.props.t('Profile')}
                             <UserInfo />
                         </div>
                     </div>

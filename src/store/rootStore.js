@@ -16,7 +16,6 @@ export default observable({
     playerURL: '',
     playerState: false,
     playerSong: '',
-    // start player
     clickPlay(item) {
         const {id, name} = item;
         if (this.playerState) {
@@ -35,5 +34,7 @@ export default observable({
                     console.error(e);
                 });
         }
-    }
+    },
+    homeData: [],
+    musicData: []
 });
