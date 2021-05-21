@@ -4,6 +4,7 @@ import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import Home from './containers/Home';
 import About from './containers/About';
 import Music from './containers/Music';
+import Search from './containers/Search';
 import NotFound from './containers/NotFound';
 import Root from './containers/Root';
 import Welcome from './containers/Welcome';
@@ -24,6 +25,7 @@ class Router extends React.Component {
                         <Route component={Home} path={'/home'} />
                         <Route component={About} path={'/about'} />
                         <Route component={Music} path={'/music'} />
+                        <Route component={Search} path={'/search-result'}/>
                         <Route component={Welcome} path={'/welcome'} />
                         <Route component={NotFound} />
                     </Switch>

@@ -1,11 +1,12 @@
 import * as React from 'react';
 import {withTranslation} from 'react-i18next';
-import {List, Button, Menu, Dropdown} from 'antd';
+import {List, Button, Menu, Dropdown, Input} from 'antd';
 import {HomeOutlined, QuestionCircleOutlined, UnorderedListOutlined, DownOutlined} from '@ant-design/icons';
 
 import './index.scss';
 import classNames from 'classnames';
 import {withRouter} from 'react-router-dom';
+import {getSearch} from '../../request/request';
 import {inject, observer} from 'mobx-react';
 
 @inject('rootStore')
@@ -40,6 +41,26 @@ class Nav extends React.Component {
         window.location.reload();
     }
 
+    inputSearchKey(key) {
+        if (key) {
+            getSearch(key)
+                .then(({data: {result}}) => {
+                    const res = result.songs.map(song => {
+                        return {
+                            recommend_music: song.name,
+                            recommend_id: song.id,
+                            artist: song.artists[0].name,
+                            isTitle: true
+                        }
+                    });
+                    this.props.history.push({pathname: '/search-result', data: JSON.stringify(res)});
+                })
+                .catch(e => {
+                    console.error(e);
+                });
+        }
+    }
+
     renderMenuList(item) {
         const {pathname} = this.props.location;
         return (
@@ -70,6 +91,7 @@ class Nav extends React.Component {
     }
 
     render() {
+        const {Search} = Input;
         return (
             <div className={'nav'}>
                 <List
@@ -79,6 +101,10 @@ class Nav extends React.Component {
                 {
                     this.props.rootStore.userId !== 0 && (
                         <div className={'nav-btn'}>
+                            <Search
+                                allowClear
+                                onSearch={this.inputSearchKey.bind(this)}
+                            />
                             <Button type={'link'} className={'logout-btn'} onClick={this.logout.bind(this)}>logout</Button>
                             <Dropdown overlay={this.renderChangeLng()}>
                                 <a className="ant-dropdown-link">

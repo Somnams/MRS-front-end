@@ -1,13 +1,11 @@
 import * as React from 'react';
-import {Modal, Typography, Avatar, Table, Button} from 'antd';
 import {useTranslation} from 'react-i18next';
-import {PlayCircleTwoTone, HeartTwoTone} from '@ant-design/icons';
-import SongTable from '../SongTable';
-import {getSearch} from '../../request/request';
 import {inject, observer} from 'mobx-react';
-import './index.scss';
+import {Avatar, Button, Table, Typography} from 'antd';
+import {HeartTwoTone, PlayCircleTwoTone} from "@ant-design/icons";
+import {getSearch} from "../../request/request";
 
-function DetailList(props) {
+function SongTable(props) {
     const {t} = useTranslation();
     const columns = React.useMemo(() => [{
         render() {
@@ -44,7 +42,6 @@ function DetailList(props) {
         },
         width: 80
     }], []);
-
     const clickToStart = item => {
         const record = {name: item.recommend_music};
         if (item.isTitle) {
@@ -61,29 +58,14 @@ function DetailList(props) {
                 });
         }
     };
-    const renderTable = React.useMemo(() => (
+    return (
         <Table
-            className={'detail-modal-table'}
             dataSource={props.data}
             columns={columns}
-            scroll={{y: 260}}
+            scroll={{y: props.scroll}}
             pagination={false}
         />
-    ), [props.data]);
-
-    return (
-        <Modal
-            className={'detail-modal'}
-            title='Details'
-            visible={props.visible}
-            footer={null}
-            onCancel={props.changeVisible.bind(this)}
-        >
-            {/*{renderTable}*/}
-
-            <SongTable className={'detail-modal-table'} data={props.data} scroll={200} />
-        </Modal>
     );
 }
 
-export default inject('rootStore')(observer(DetailList));
+export default inject('rootStore')(observer(SongTable));
