@@ -42,8 +42,7 @@ class UserInfo extends React.Component {
                             Address: Xi'an Shanxi
                         </div>
                         <div className={'user-list-desc-content'}>
-                            这个人很懒，什么都没有留下 ~ ~
-                            {/*The person was lazy and left nothing behind*/}
+                            The person was lazy and left nothing behind ~
                         </div>
                     </div>
                 </div>
