@@ -102,6 +102,7 @@ class Nav extends React.Component {
                     this.props.rootStore.userId !== 0 && (
                         <div className={'nav-btn'}>
                             <Search
+                                className={'nav-btn-search'}
                                 allowClear
                                 onSearch={this.inputSearchKey.bind(this)}
                             />

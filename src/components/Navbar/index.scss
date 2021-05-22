@@ -48,11 +48,15 @@
   }
 
   &-btn {
+    &-search {
+      width: 180px;
+    }
     opacity: 0.3;
     >* {
       color: #eee;
       font-size: 16px;
     }
+    text-align: center;
     display: flex;
     flex-direction: column;
     position: absolute;
