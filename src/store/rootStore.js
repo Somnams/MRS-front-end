@@ -35,6 +35,11 @@ export default observable({
                 });
         }
     },
+    clickLike(item) {
+        const len = this.musicData.length;
+        this.musicData[len - 1].unshift(item);
+    }
+    ,
     homeData: [],
     musicData: []
 });

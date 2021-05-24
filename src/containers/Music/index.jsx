@@ -76,7 +76,7 @@ class Music extends React.Component {
     render() {
         const data = this.state.dataSource;
 
-        const title = ['Recommend List', 'Recommend List', 'Recommend List', 'Recommend List', 'History'];
+        const title = ['Recommend List', 'Recommend List', 'Recommend List', 'Recommended singers', 'History'];
         return (
             <Spin spinning={this.state.loading} size={'large'}>
                 <div className={'page music'}>
@@ -86,6 +86,7 @@ class Music extends React.Component {
                             <div className={'music-main-list'}>
                                 <p className={'description-text'}>{this.props.t(title[index])}</p>
                                 <RecommendList
+                                    index={index}
                                     desc={index}
                                     data={item}
                                     coverSrc={shuffledImages[index]}

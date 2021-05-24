@@ -4,7 +4,6 @@ import SongTable from '../SongTable';
 import './index.scss';
 
 function DetailList(props) {
-
     return (
         <Modal
             className={'detail-modal'}
@@ -13,7 +12,7 @@ function DetailList(props) {
             footer={null}
             onCancel={props.changeVisible.bind(this)}
         >
-            <SongTable className={'detail-modal-table'} data={props.data} scroll={200} />
+            <SongTable index={props.index} className={'detail-modal-table'} data={props.data} scroll={200} />
         </Modal>
     );
 }

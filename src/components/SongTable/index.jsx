@@ -1,12 +1,14 @@
 import * as React from 'react';
 import {useTranslation} from 'react-i18next';
 import {inject, observer} from 'mobx-react';
-import {Avatar, Button, Table, Typography} from 'antd';
+import {Avatar, Button, message, Table, Typography} from 'antd';
 import {HeartTwoTone, PlayCircleTwoTone} from "@ant-design/icons";
 import {getSearch} from "../../request/request";
 
 function SongTable(props) {
     const {t} = useTranslation();
+    const [data, setData] = React.useState([]);
+
     const columns = React.useMemo(() => [{
         render() {
             return <Avatar src={'http://p3.music.126.net/Uk2n3ATMpuq2nl08IkL4bQ==/109951165803262106.jpg?param=140y140'} />
@@ -36,7 +38,7 @@ function SongTable(props) {
             return (
                 <>
                     <Button onClick={() => clickToStart(record)} icon={<PlayCircleTwoTone />} size={'small'}/>
-                    <Button icon={<HeartTwoTone />} size={'small'} />
+                    <Button onClick={() => clickLike(record)} icon={<HeartTwoTone />} size={'small'} />
                 </>
             );
         },
@@ -58,6 +60,12 @@ function SongTable(props) {
                 });
         }
     };
+
+    const clickLike = item => {
+        message.success('success to push');
+        props.rootStore.clickLike(item);
+    };
+
     return (
         <Table
             dataSource={props.data}
