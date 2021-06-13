@@ -76,7 +76,7 @@ class Music extends React.Component {
     render() {
         const data = this.state.dataSource;
 
-        const title = ['Recommend List', 'Recommend List', 'Recommend List', 'Recommended singers', 'History'];
+        const title = ['Recommend List', 'Recommend List', 'Recommend List', 'Recommend List', 'History'];
         return (
             <Spin spinning={this.state.loading} size={'large'}>
                 <div className={'page music'}>

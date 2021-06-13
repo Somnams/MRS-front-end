@@ -17,7 +17,7 @@ class RecommendList extends React.Component {
             '歌曲推荐',
             '根据听歌记录为你打造',
             '和你相似的用户都在听',
-            '这里有你喜欢的歌手 ',
+            '你的好友都在听',
             '我喜欢的音乐'
         ];
     }

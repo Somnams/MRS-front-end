@@ -36,7 +36,8 @@ class UserInfo extends React.Component {
                             <span>0 <div className={'span-tag'}>{this.props.t('Following')}</div></span>
                             <span>0 <div className={'span-tag'}>{this.props.t('Followers')}</div></span>
                             <span>0 <div className={'span-tag'}>{this.props.t('Dynamic')}</div></span>
-                            <span><SettingOutlined /></span>
+                            <span>5 <div className={'span-tag'}>{this.props.t('Friends')}</div></span>
+                            {/*<span><SettingOutlined /></span>*/}
                         </div>
                         <div className={'user-list-desc-detail'}>
                             Address: Xi'an Shanxi
